@@ -10,6 +10,9 @@ const weatherUtility = require('./utils/weather.js')
 // create express application
 const app = express()
 
+// In case running the code on Heroku, port will be provided by Heroku, else take from local
+const port = process.env.PORT || 3000
+
 // Paths for express config
 const pathToPublicDir = path.join(__dirname, '../public')
 const pathToViewDir = path.join(__dirname, '../templates/views')
@@ -111,7 +114,7 @@ app.get('*', (req, res) => {
 })
 
 // To start server on port 3000
-app.listen(3000, () => {
+app.listen(port, () => {
     // executes when server runs
-    console.log("Server has started on port 3000!");
+    console.log("Server has started on port " + port + "!");
 })
